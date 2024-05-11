@@ -10,6 +10,7 @@ import {
   CfnSubnetRouteTableAssociation,
   CfnRoute,
 } from 'aws-cdk-lib/aws-ec2';
+import { aws_ssm as ssm } from 'aws-cdk-lib';
 
 const projectName: string = projectConstants.projectName;
 const vpcName: string = projectConstants.vpc.vpcName;
@@ -200,6 +201,11 @@ export class VpcStack extends cdk.Stack {
     const publicManagementRouteTableAssociation1c = new CfnSubnetRouteTableAssociation(this, 'publicManagementRouteTableAssociation1c', {
       routeTableId: publicIngressRouteTable.ref,
       subnetId: publicManagementSubnet1c.ref,
+    });
+
+    new ssm.StringParameter(this, 'VpcId', {
+      parameterName: `/${projectName}/vpcId`,
+      stringValue: vpc.attrVpcId,
     });
   }
 }
