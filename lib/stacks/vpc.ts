@@ -32,7 +32,11 @@ export class VpcStack extends cdk.Stack {
     });
 
     // InternetGateway
-    const igw = new CfnInternetGateway(this, 'igw', {});
+    const igw = new CfnInternetGateway(this, 'igw', {
+      tags: [
+        { key: 'Name', value: 'sbcntr-igw' },
+      ]
+    });
     const vpcGatewayAttachment = new CfnVPCGatewayAttachment(this, 'igwAttachment', {
       internetGatewayId: igw.ref,
       vpcId: vpc.ref,
