@@ -1,7 +1,10 @@
 export const projectConstants = {
   projectName: 'ecs-cdk',
 
-  vpcName: `ecs-cdk-vpc`,
+  vpc: {
+    vpcName: `ecs-cdk-vpc`,
+    cidr: '10.0.0.0/16',
+  },
 
   // セキュリティグループで多用するポート番号リスト
   securityGroup: {
