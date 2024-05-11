@@ -1,5 +1,5 @@
 export const projectConstants = {
-  projectName: 'ecs-cdk',
+  projectName: 'sbcntr',
 
   vpc: {
     vpcName: 'sbcntrVpc',
@@ -16,8 +16,17 @@ export const projectConstants = {
 
   // セキュリティグループで多用するポート番号リスト
   securityGroup: {
-    httpProt: 80,
-    httpsPort: 443,
-    mySqlPort: 3306,
+    portNumber: {
+      httpProt: 80,
+      httpsPort: 443,
+      mySqlPort: 3306,
+    },
+    ipProtocol: {
+      tcp: 'tcp',
+    },
+    cidrBlock: {
+      anyWhereIPv4: '0.0.0.0/0',
+      anyWhereIPv6: '::/0'
+    }
   }
 }
